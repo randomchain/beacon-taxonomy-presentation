@@ -1,0 +1,28 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+\input{preamble/setup.tex}
+
+\title{Presentation of Paper}
+\subtitle{OmniLedger: A Secure, Scale-Out, Decentralized Ledger}
+\date{}
+\author{Michael Toft Jensen}
+
+\begin{document}
+
+% Title frame
+\maketitle
+\note{
+    Notes here baby
+}
+
+\subimport{content/}{index.tex}
+
+% Fixing bug in Hyperref with translation of Appendix.
+\renewcommand\appendixname{Appendix}
+\appendix
+
+
+\begin{frame}{List of FixMes}
+    \listoffixmes
+\end{frame}
+
+\end{document}
