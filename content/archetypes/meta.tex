@@ -2,10 +2,99 @@
 
 \begin{frame}{Archetypes}
 
-    \begin{itemize}
-        \item Meme
 
-    \end{itemize}
+\end{frame}
+\note{
+meme
+}
+
+\begin{frame}{Archetypes}
+    \newlength{\onethird}
+    \setlength{\onethird}{0.315\textwidth}
+    %\begin{tabular}{@{}ll@{}}
+        \begin{minipage}[t]{\onethird}
+            \begin{block}{Autocratic Collector}
+                \centering
+                \scalebox{0.8}{
+                \begin{tikzpicture}[auto]
+                    \pgfdeclarelayer{background}
+                    \pgfsetlayers{background,main}
+                    \node[block] (input) {Private external\\entropy source};
+                    \node[block, below=.7cm of input] (computation) {Computation\\$f(I_t)$};
+                    \node[block, below=1.2cm of computation] (users) {Users};
+                    \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
+                    \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
+                    \begin{pgfonlayer}{background}
+                        \node[block] (beacon) [container, fit={(input) (computation)}] {};
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+                }
+            \end{block}
+        \end{minipage}
+        ~~\begin{minipage}[t]{\onethird}
+            \begin{block}{Special MPC}
+                \centering
+                \scalebox{0.8}{
+                \begin{tikzpicture}[auto]
+                    \pgfdeclarelayer{background}
+                    \pgfsetlayers{background,main}
+                    \node[block] (input) {Each user's input};
+                    \node[block, text width=9em, below=.7cm of input] (computation) {Partial computation\\$f'(I'_t)$};
+                    \node[block, below=1.7cm of computation] (users) {Users};
+                    \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
+                    \draw[arrow] (computation) -- node[yshift=-5mm] {$O_t$} (users);
+                    \draw[arrow] (computation.south) to [out=250, in=250, looseness=2] node[shift={(-7mm,3mm)}] (rprime) {$O'_t$} ([shift={(-10mm,0mm)}]computation.south);
+                    \begin{pgfonlayer}{background}
+                        \node[block] (beacon) [container, fit={(input) (computation) ([shift={(0mm,3mm)}]rprime.south west)}] {};
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+                }
+            \end{block}
+        \end{minipage}
+        ~~\begin{minipage}[t]{\onethird}
+            \begin{block}{Transparent Authority}
+                \centering
+                \scalebox{0.8}{
+                \begin{tikzpicture}[auto]
+                    \pgfdeclarelayer{background}
+                    \pgfsetlayers{background,main}
+                    \node[block] (input) {Verifiable input};
+                    \node[block, below=1cm of input] (computation) {Computation\\$f(I_t)$};
+                    \node[block, below=1cm of computation] (users) {Users};
+                    \draw[arrow] (input) -- node[yshift=1mm] (inp) {$I_t$} (computation);
+                    \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
+                    \begin{pgfonlayer}{background}
+                        \node[block] (beacon) [container, fit={(computation)}] {};
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+                }
+            \end{block}
+        \end{minipage} %&
+      %  ~~\parbox{\onethird}{
+      %    Test
+      %  }
+    %\end{tabular}
+\end{frame}
+\note{
+meme
+}
+
+\begin{frame}{Autocratic Collector}
+
+\end{frame}
+\note{
+meme
+}
+
+\begin{frame}{Special MPC}
+
+\end{frame}
+\note{
+meme
+}
+
+\begin{frame}{Transparent Authority}
+
 \end{frame}
 \note{
 meme
