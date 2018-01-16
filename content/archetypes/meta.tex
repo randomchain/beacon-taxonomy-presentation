@@ -73,6 +73,30 @@ meme
 }
 
 \begin{frame}{Autocratic Collector}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+            \begin{itemize}
+                \item Private input
+                \item
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \begin{tikzpicture}[auto]
+                    \pgfdeclarelayer{background}
+                    \pgfsetlayers{background,main}
+                    \node[block] (input) {Private external\\entropy source};
+                    \node[block, below=.7cm of input] (computation) {Computation\\$f(I_t)$};
+                    \node[block, below=1.2cm of computation] (users) {Users};
+                    \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
+                    \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
+                    \begin{pgfonlayer}{background}
+                        \node[block] (beacon) [container, fit={(input) (computation)}] {};
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+             \end{center}
+        \end{column}
+        \end{columns}
 
 \end{frame}
 \note{
@@ -80,7 +104,28 @@ meme
 }
 
 \begin{frame}{Special MPC}
-
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+           some text here some text here some text here some text here some text here
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \begin{center}
+                \begin{tikzpicture}[auto]
+                    \pgfdeclarelayer{background}
+                    \pgfsetlayers{background,main}
+                    \node[block] (input) {Each user's input};
+                    \node[block, text width=9em, below=.7cm of input] (computation) {Partial computation\\$f'(I'_t)$};
+                    \node[block, below=1.7cm of computation] (users) {Users};
+                    \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
+                    \draw[arrow] (computation) -- node[yshift=-5mm] {$O_t$} (users);
+                    \draw[arrow] (computation.south) to [out=250, in=250, looseness=2] node[shift={(-7mm,3mm)}] (rprime) {$O'_t$} ([shift={(-10mm,0mm)}]computation.south);
+                    \begin{pgfonlayer}{background}
+                        \node[block] (beacon) [container, fill=GoogleLightBlue!40, draw=GoogleLightBlue, fit={(input) (computation) ([shift={(0mm,3mm)}]rprime.south west)}] {};
+                    \end{pgfonlayer}
+                \end{tikzpicture}
+             \end{center}
+        \end{column}
+        \end{columns}
 \end{frame}
 \note{
 meme
@@ -91,7 +136,7 @@ meme
         \begin{column}{0.5\textwidth}
            some text here some text here some text here some text here some text here
         \end{column}
-        \begin{column}{0.5\textwidth}  %%<--- here
+        \begin{column}{0.5\textwidth}
             \begin{center}
                 \begin{tikzpicture}[auto]
                     \pgfdeclarelayer{background}
@@ -102,7 +147,7 @@ meme
                     \draw[arrow] (input) -- node[yshift=1mm] (inp) {$I_t$} (computation);
                     \draw[arrow] (computation) -- node[yshift=-1mm] {$O_t$} (users);
                     \begin{pgfonlayer}{background}
-                        \node[block] (beacon) [container, fit={(computation)}] {};
+                        \node[block] (beacon) [container, fill=GoogleBlueGrey!40, draw=GoogleBlueGrey, fit={(computation)}] {};
                     \end{pgfonlayer}
                 \end{tikzpicture}
              \end{center}
