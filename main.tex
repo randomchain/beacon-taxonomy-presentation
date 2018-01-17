@@ -6,13 +6,27 @@
 \date{}
 \author{\textbf{deis923e17}\\Mathias Sass Michno, Michael Toft Jensen, Sebastian Rom Kristensen}
 
+%\logo{\tikz [remember picture,overlay]
+%\node at
+%    ([yshift=8cm, xshift=-3cm]current page.south east)
+%    {\includegraphics[width=3cm]{figures/533516613.jpg}};}
+
 \begin{document}
 
 % Title frame
-\maketitle
+\begin{frame}
+    \tikz [remember picture, overlay]
+     \node at
+         ([yshift=5.77cm, xshift=-3cm]current page.south east)
+         {\includegraphics[width=3cm]{figures/70263-lighthouse-at-night.png}};
+    \titlepage
+ \end{frame}
+%\maketitle
+
 \note{
     Notes here baby
 }
+
 
 \subimport{content/}{index.tex}
 
