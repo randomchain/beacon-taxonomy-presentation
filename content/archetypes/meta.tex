@@ -39,7 +39,7 @@
             \node[block] (input) {Each user's input};
             \node[block, text width=9em, below=1cm of input] (computation) {Partial computation\\$f'(I'_t)$};
             \node[block, below=1cm of computation] (users) {Users};
-            \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
+            \draw[arrow] (input) -- node (inp) {$I_{u,t}$} (computation);
             \draw[arrow] (computation) -- node {$O_t$} (users);
             \draw[arrow] (computation.south) to [out=250, in=250, looseness=2] node[shift={(-7mm,3mm)}] (rprime) {$O'_t$} ([shift={(-10mm,0mm)}]computation.south);
             \begin{pgfonlayer}{background}
@@ -59,7 +59,7 @@
             \node[block] (input) {Verifiable input};
             \node[block, below=1cm of input] (computation) {Computation\\$f(I_t)$};
             \node[block, below=1cm of computation] (users) {Users};
-            \draw[arrow] (input) -- node[yshift=1mm] (inp) {$I_t$} (computation);
+            \draw[arrow] (input) -- node (inp) {$I_t$} (computation);
             \draw[arrow] (computation) -- node {$O_t$} (users);
             \begin{pgfonlayer}{background}
                 %\node[block] (beacon) [container, fill=GoogleBlueGrey!40, draw=GoogleBlueGrey, fit={(computation)}] {};
@@ -75,18 +75,30 @@
     \end{itemize}
 }
 
-\begin{frame}{Archetype: Autocratic Collector}
+\begin{frame}{Autocratic Collector: The NIST Beacon}
     \begin{columns}
-        \begin{column}{0.6\textwidth}
+        \begin{column}{0.7\textwidth}
+						\vspace{.5cm}
             \begin{itemize}
-                \item Collects private input
-                \begin{itemize}
-                    \item Random physical occurrences:\\{\scriptsize E.g.\ Background radiation, sun spots, weather, quantum-mechanical effects (photon splitters), \ldots}
-                \end{itemize}
-                \item Has no way of proving its honesty
+                \item \textsc{\textbf{Input:}} Output from a photon splitter
+								\item \textsc{\textbf{Computation:}} ---
+                \item \textsc{\textbf{Output:}} 512 bits every 60 seconds
+								%\begin{itemize}
+								%  \item The output at January 17, 15:11 (UTC)\\
+								%	      \texttt{\scriptsize 67AE66B6E1812F4D32064B834A5E1AD5\\1424DCBC18DF8A9AAE2B8B7FA409002E\\9E314045F6E595A8EEBBB027CFBB4D8B\\BA64007F6EAE3EC92051ADD8391DA2B9\\}
+								%\end{itemize}
+								
             \end{itemize}
+						\vspace{.7cm}\centering
+						{%
+							\setlength{\fboxsep}{0pt}%
+							\setlength{\fboxrule}{.75pt}%
+							\fbox{\includegraphics[width=.95\textwidth]{figures/nist.jpg}}\\
+							\tiny
+							\vspace{-1.5em}Image source: NIST%
+						}%
         \end{column}
-        \begin{column}{0.4\textwidth}
+        \begin{column}{0.3\textwidth}
             \begin{center}
                 \scalebox{0.85}{
                 \begin{tikzpicture}[auto]
@@ -116,22 +128,19 @@
 
 }
 
-\begin{frame}{Archetype: Special MPC}
+\begin{frame}{Special MPC: RandHerd}
     \begin{columns}
-        \begin{column}{0.6\textwidth}
+        \begin{column}{0.7\textwidth}
             \begin{itemize}
-                \item Multi-party computation
-                \begin{itemize}
-                    \item TODO: What is MPC?
-                \end{itemize}
-                \item Issues to consider/overcome:
-                \begin{itemize}
-                    \item Scaling
-                    \item Availability
-                \end{itemize}
+                \item Hierarchy:
+                \begin{enumerate}
+									\item Protocol Leader
+									\item Group Leader
+									\item Participant
+								\end{enumerate}
             \end{itemize}
         \end{column}
-        \begin{column}{0.4\textwidth}
+        \begin{column}{0.3\textwidth}
             \begin{center}
                 \scalebox{0.85}{
                 \begin{tikzpicture}[auto]
@@ -140,7 +149,7 @@
                     \node[block] (input) {Each user's input};
                     \node[block, text width=9em, below=.7cm of input] (computation) {Partial computation\\$f'(I'_t)$};
                     \node[block, below=1.7cm of computation] (users) {Users};
-                    \draw[arrow] (input) -- node (inp) {$i_{u,t}$} (computation);
+                    \draw[arrow] (input) -- node (inp) {$I_{u,t}$} (computation);
                     \draw[arrow] (computation) -- node[yshift=-5mm] {$O_t$} (users);
                     \draw[arrow] (computation.south) to [out=250, in=250, looseness=2] node[shift={(-7mm,3mm)}] (rprime) {$O'_t$} ([shift={(-10mm,0mm)}]computation.south);
                     \begin{pgfonlayer}{background}
@@ -154,15 +163,17 @@
 \end{frame}
 \note{
     \begin{itemize}
+				\item The figure is very loose; Both RandHerd and SCRAPE are significantly more advanced.
         \item Scaling issues
         \item What attack types?
     \end{itemize}
 }
 
-\begin{frame}{Archetype: Transparent Authority}
+\begin{frame}{Transparent Authority: SOMETHING}
     \begin{columns}
         \begin{column}{0.6\textwidth}
             \begin{itemize}
+								\item TODO
                 \item Uses verifiable input
                 \item Has full transparency in $f()$
                 \item Issues to consider:
@@ -199,9 +210,13 @@
 
 }
 
-%\begin{frame}{Differences}
-%    TODO
-%\end{frame}
-%\note{
-%meme
-%}
+\begin{frame}{Archetype Details}
+    \begin{itemize}
+			\item Autocratic Collectors are obviously not ideal in our setting.
+			\item S-MPC suffers from scalability issues and all participants is expected to perform work and ``be there'' for a long time. Probably best suited for permissioned settings.
+			\item Transparent Authority is a middle point. Full transparency, but significantly simpler construction than S-MPC.
+		\end{itemize}
+\end{frame}
+\note{
+meme
+}
