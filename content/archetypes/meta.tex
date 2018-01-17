@@ -1,9 +1,11 @@
 \section{Archetypes}
 \note{
-    Notes...
+    \begin{itemize}
+        \item TODO: Intuition of why and how we created these
+    \end{itemize}
 }
 
-\begin{frame}{Archetypes}
+\begin{frame}{3 Archetypes}
     \newlength{\onethird}
     \setlength{\onethird}{0.315\textwidth}
     \vspace{.2cm}
@@ -68,21 +70,25 @@
 \end{frame}
 \note{
     \begin{itemize}
-        \item Intuition of why and how we created these
+
         \item For all types, the output is the same. Users can use the output from all types for all the use cases.
     \end{itemize}
 }
 
 \begin{frame}{Archetype: Autocratic Collector}
     \begin{columns}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{itemize}
                 \item Collects private input
+                \begin{itemize}
+                    \item Random physical occurrences:\\{\scriptsize E.g.\ Background radiation, sun spots, weather, quantum-mechanical effects (photon splitters), \ldots}
+                \end{itemize}
                 \item Has no way of proving its honesty
             \end{itemize}
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
             \begin{center}
+                \scalebox{0.85}{
                 \begin{tikzpicture}[auto]
                     \pgfdeclarelayer{background}
                     \pgfsetlayers{background,main}
@@ -95,6 +101,7 @@
                         \node[block] (beacon) [container, fit={(input) (computation)}] {};
                     \end{pgfonlayer}
                 \end{tikzpicture}
+                }
              \end{center}
         \end{column}
     \end{columns}
@@ -111,7 +118,7 @@
 
 \begin{frame}{Archetype: Special MPC}
     \begin{columns}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{itemize}
                 \item Multi-party computation
                 \begin{itemize}
@@ -124,8 +131,9 @@
                 \end{itemize}
             \end{itemize}
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
             \begin{center}
+                \scalebox{0.85}{
                 \begin{tikzpicture}[auto]
                     \pgfdeclarelayer{background}
                     \pgfsetlayers{background,main}
@@ -139,6 +147,7 @@
                         \node[block] (beacon) [container, fill=GoogleLightBlue!40, draw=GoogleLightBlue, fit={(input) (computation) ([shift={(0mm,3mm)}]rprime.south west)}] {};
                     \end{pgfonlayer}
                 \end{tikzpicture}
+                }
              \end{center}
         \end{column}
         \end{columns}
@@ -152,7 +161,7 @@
 
 \begin{frame}{Archetype: Transparent Authority}
     \begin{columns}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{itemize}
                 \item Uses verifiable input
                 \item Has full transparency in $f()$
@@ -162,8 +171,9 @@
                 \end{itemize}
             \end{itemize}
         \end{column}
-        \begin{column}{0.5\textwidth}
+        \begin{column}{0.4\textwidth}
             \begin{center}
+                \scalebox{0.85}{
                 \begin{tikzpicture}[auto]
                     \pgfdeclarelayer{background}
                     \pgfsetlayers{background,main}
@@ -176,6 +186,7 @@
                         \node[block] (beacon) [container, fill=GoogleBlueGrey!40, draw=GoogleBlueGrey, fit={(computation)}] {};
                     \end{pgfonlayer}
                 \end{tikzpicture}
+                }
              \end{center}
         \end{column}
         \end{columns}
