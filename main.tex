@@ -11,6 +11,30 @@
 %    ([yshift=8cm, xshift=-3cm]current page.south east)
 %    {\includegraphics[width=3cm]{figures/533516613.jpg}};}
 
+% BIGGER NOTES
+\makeatletter
+\defbeamertemplate*{note page}{mynotes}
+{%
+  %\notefont
+  \setlength{\leftmargini}{0pt}
+  \setlength{\leftmarginii}{1.5em}
+  \setlength{\leftmarginiii}{1.2em}
+	\setbeamertemplate{itemize/enumerate body begin}{\large}%
+	\setbeamertemplate{itemize/enumerate subbody begin}{\vspace{-6pt}\normalsize}%
+	\setbeamertemplate{itemize/enumerate subsubbody begin}{\vspace{-3pt}}%
+	\ifbeamercolorempty[bg]{note page}{}{%
+    \nointerlineskip%
+    \insertvrule{\paperheight}{note page.bg}%
+    \vskip-1\paperheight%
+  }%
+  %\vskip.25em
+  \nointerlineskip
+  \insertnote
+}
+\makeatother
+
+\setbeamertemplate{note page}[mynotes]
+
 \begin{document}
 
 % Title frame

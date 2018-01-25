@@ -197,7 +197,11 @@
 \end{frame}
 \note{
     \begin{itemize}
-				\item $t_-1$: Data reception starts. Concatenated in order of arrival. Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
+				\item $t_-1$: Data reception starts.
+				\begin{itemize}
+					\item Concatenated in order of arrival.
+					\item Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
+				\end{itemize}
 				\item $t_0$: Data reception stops
 				\begin{itemize}
 					\item After a small epsilon (less than a second), the concatenated tweets and a commitment to salt published.
