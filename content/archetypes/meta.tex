@@ -197,7 +197,7 @@
 \end{frame}
 \note{
     \begin{itemize}
-				\item $t_-1$: Data reception starts.
+				\item $t_{-1}$: Data reception starts.
 				\begin{itemize}
 					\item Concatenated in order of arrival.
 					\item Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
@@ -213,8 +213,6 @@
 					\item the salt is published
 					\item and the witness is a shortcut to verification.
 				\end{itemize}
-        \item Which attacks?
-        \item Needs some way of protecting against attacks
     \end{itemize}
 
 }
@@ -248,11 +246,16 @@
 \end{frame}
 \note{
     \begin{itemize}
+				\item Autocratic Collector
+				\begin{itemize}
+					\item Obviously not ideal in our setting.
+				\end{itemize}
 				\item Specialized MPC
 				\begin{itemize}
 					\item Complex mechanisms, security governed by heavy math and protocols
 					\item Scalability issues that needs to be solved
 					\item Must participate by ``being there'' and do work
+					\item Best suited for permissioned settings
 				\end{itemize}
         \item Transparent Authority
 				\begin{itemize}
@@ -261,13 +264,3 @@
     \end{itemize}
 }
 
-\begin{frame}{Archetype Details}
-    \begin{itemize}
-			\item Autocratic Collectors are obviously not ideal in our setting.
-			\item S-MPC suffers from scalability issues and all participants is expected to perform work and ``be there'' for a long time. Probably best suited for permissioned settings.
-			\item Transparent Authority is a middle point. Full transparency, but significantly simpler construction than S-MPC.
-		\end{itemize}
-\end{frame}
-\note{
-meme
-}
