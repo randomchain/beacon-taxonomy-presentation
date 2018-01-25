@@ -197,6 +197,18 @@
 \end{frame}
 \note{
     \begin{itemize}
+				\item $t_-1$: Data reception starts. Concatenated in order of arrival. Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
+				\item $t_0$: Data reception stops
+				\begin{itemize}
+					\item After a small epsilon (less than a second), the concatenated tweets and a commitment to salt published.
+					\item Sloth is started on tweets concatenated with salt.
+					\item Sloth is just a hash function that is very slow.
+				\end{itemize}
+				\item $t_1$ The result of the sloth is the last hash.
+				\begin{itemize}
+					\item the salt is published
+					\item and the witness is a shortcut to verification.
+				\end{itemize}
         \item Which attacks?
         \item Needs some way of protecting against attacks
     \end{itemize}
