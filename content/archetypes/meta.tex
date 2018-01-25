@@ -30,7 +30,7 @@
     \end{minipage}
     ~~\begin{minipage}[t]{\onethird}
         \centering
-        \textbf{Special MPC}\\
+        \textbf{Specialized MPC}\\
         \vspace{.6cm}
         \scalebox{0.8}{
         \begin{tikzpicture}[auto]
@@ -131,14 +131,15 @@
 \begin{frame}{Special MPC: RandHerd}
     \begin{columns}
         \begin{column}{0.7\textwidth}
-            \begin{itemize}
-                \item \textsc{\textbf{Hierarchy:}}
-                \begin{enumerate}
-                    \item Protocol Leader
-                    \item Group Leader
-                    \item Participant
-                \end{enumerate}
-            \end{itemize}
+						Setup (10 minutes) + Round execution (6 seconds) \vspace{1cm}
+						\\
+						\textsc{\textbf{Hierarchy:}}
+						\footnotesize
+						\Tree [.{Protocol Leader} [.{Group Leader 1} $p_1$ $p_2$ $p_3$ ]
+																			[.{Group Leader 2} $p_1$ $p_2$ $p_3$ ]
+																			[.{Group Leader 3} $p_1$ $p_2$ $p_3$ ]
+									]
+						
         \end{column}
         \begin{column}{0.3\textwidth}
             \begin{center}
@@ -200,6 +201,48 @@
         \item Needs some way of protecting against attacks
     \end{itemize}
 
+}
+
+\begin{frame}{3 Archetypes}
+    %\newlength{\onethird}
+    \setlength{\onethird}{0.315\textwidth}
+    \vspace{.2cm}
+    \begin{minipage}[t]{\onethird}
+        \centering
+        \textbf{Autocratic Collector\vphantom{j}}\\
+        %\vspace{.6cm}
+        \huge\color[rgb]{1,0,0} $\times$
+    \end{minipage}
+    ~~\begin{minipage}[t]{\onethird}
+        \centering
+        \textbf{Specialized MPC}\\
+        \begin{itemize}
+					\item Scalability Issues
+					\item All participants must actively participate
+				\end{itemize}
+    \end{minipage}
+    ~~\begin{minipage}[t]{\onethird}
+        \centering
+        \textbf{Transparent Authority}\\
+				\begin{itemize}
+					\item Simpler construction
+					\item (Potentially) Single point of failure
+				\end{itemize}
+    \end{minipage}
+\end{frame}
+\note{
+    \begin{itemize}
+				\item Specialized MPC
+				\begin{itemize}
+					\item Complex mechanisms, security governed by heavy math and protocols
+					\item Scalability issues that needs to be solved
+					\item Must participate by ``being there'' and do work
+				\end{itemize}
+        \item Transparent Authority
+				\begin{itemize}
+					\item (where s-mpc governed by math) Governed by simpler things such as the logic behind slow hash functions in Random Zoo.
+				\end{itemize}
+    \end{itemize}
 }
 
 \begin{frame}{Archetype Details}
