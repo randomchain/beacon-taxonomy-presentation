@@ -1,7 +1,9 @@
 \section{Archetypes}
 \note{
     \begin{itemize}
-        \item TODO: Intuition of why and how we created these
+        \item \textbf{In our work, we found many different approaches to randomness beacons.}
+				\item We have \textbf{generalized} these approaches and \textbf{boiled them down to 3 archetypes}, which are \textbf{broad characterizations} of \textbf{prominent} ways of creating a randomness beacons.
+				\item These archetypes enables us to \textbf{generalize} over the approaches, \textbf{instead of treating each approach individually}.
     \end{itemize}
 }
 
@@ -69,10 +71,35 @@
     \end{minipage}
 \end{frame}
 \note{
+	\begin{multicols}{2}
     \begin{itemize}
+        %So these are our three archetypes.
+				\item Autocratic Collector
+				\begin{itemize}
+					\item Characterized by users need to trust.
+				\end{itemize}
+				\item Specialized MPC
+				\begin{itemize}
+					\item \textbf{alleviates need for trust} in an autocratic collector
+					\item Characterized by: Partial Computation by \textbf{all} participants
+					\item each user input: private number (so random, that others can't predict it)
+					\item However, sequentially is \textbf{not scalable}.
+					\begin{itemize}
+						\item We have \textbf{not seen} the classic sequential mpc.
+						\item The\textbf{ two types} we have seen \textrightarrow{} \textbf{more advanced}
+						\item But the figure captures the gist
+					\end{itemize}
 
-        \item For all types, the output is the same. Users can use the output from all types for all the use cases.
-    \end{itemize}
+				\end{itemize}
+				\item Transparent Authority
+				\begin{itemize}
+					\item \textbf{Characterized by full transparency} in sourcing \textbf{input} and execution of \textbf{computation}
+					\item \textbf{Output} can be \textbf{verified} to make sure it is really random
+					%\item In case of user input, users want to check that their input was part of computation
+					\item This is the \textbf{largest archetype} in terms of literature.
+				\end{itemize}
+		\end{itemize}
+	\end{multicols}
 }
 
 \begin{frame}{Autocratic Collector: The NIST Beacon}
@@ -81,7 +108,7 @@
 						\vspace{.5cm}
             \begin{itemize}
                 \item \textsc{\textbf{Input:}} Output from a photon splitter
-								\item \textsc{\textbf{Computation:}} ---
+								\item \textsc{\textbf{Computation:}} Crypto-hardened?
                 \item \textsc{\textbf{Output:}} 512 bits every 60 seconds
 								%\begin{itemize}
 								%  \item The output at January 17, 15:11 (UTC)\\
@@ -121,14 +148,17 @@
 \end{frame}
 \note{
     \begin{itemize}
-        \item We don't know if it has been tampered with. There is no way of knowing for sure.
-        \item What attack types are most particular for this type?
-
+        \item The only approach that is implemented and usable in a wide setting.
+				\item NIST is run by the US government
+				\begin{itemize}
+					\item \textbf{claims} to generate the random number by observing \textbf{quantum-mechanical effects in a photon splitter}.
+					\item \textbf{Every minute:} Outputs 512 unpredictable bits.
+					\item Each output is "crypto hardened", whatever that means.
+				\end{itemize}
     \end{itemize}
-
 }
 
-\begin{frame}{Special MPC: RandHerd}
+\begin{frame}{Specialized MPC: RandHerd}
     \begin{columns}
         \begin{column}{0.7\textwidth}
 						Setup (10 minutes) + Round execution (6 seconds) \vspace{1cm}
@@ -164,9 +194,14 @@
 \end{frame}
 \note{
     \begin{itemize}
-				\item The figure is very loose; Both RandHerd and SCRAPE are significantly more advanced.
-        \item Scaling issues
-        \item What attack types?
+				\item RandHerd, Which consists of two parts. 
+				\begin{itemize}
+					\item \textbf{Setup-part} where partcipants are \textbf{sharded} into a protocol leader, group leaders and participants. This takes roughly 10 minutes (n=1024).
+					\item After the setup, participants can in the \textbf{round execution} can \textbf{generate} a random number \textbf{every 6 seconds.}
+					\item \textbf{Participants}: random numbers \textrightarrow{} \textbf{batched} by group leaders \textrightarrow{} \textbf{collected} by protocol leader.
+					\item \textbf{After some cryptographic computation} in batches back and forth between the protocol leader, group leaders, and ordinary participants, a \textbf{single collectively} created random number is \textbf{released} by the protocol leader.
+					\item This number is efficiently \textbf{verifiable} by everyone. 
+				\end{itemize}
     \end{itemize}
 }
 
@@ -197,27 +232,29 @@
 \end{frame}
 \note{
     \begin{itemize}
-				\item $t_{-1}$: Data reception starts.
+			
+				\item $t_{-1}$: \textbf{Data reception starts}.
 				\begin{itemize}
 					\item Concatenated in order of arrival.
-					\item Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
+					
 				\end{itemize}
-				\item $t_0$: Data reception stops
+				\item $t_0$: \textbf{Data reception stops}
 				\begin{itemize}
-					\item After a small epsilon (less than a second), the concatenated tweets and a commitment to salt published.
-					\item Sloth is started on tweets concatenated with salt.
-					\item Sloth is just a hash function that is very slow.
+					\item After a small \textbf{epsilon} (less than a second), the concatenated tweets and a commitment to salt published.
+					\item Sloth is started on\textbf{ tweets concatenated with salt}.
+					\item Sloth is just a\textbf{ hash function} that is very slow.
 				\end{itemize}
-				\item $t_1$ The result of the sloth is the last hash.
+				\item $t_1$ The result of the sloth is the hash.
 				\begin{itemize}
 					\item the salt is published
-					\item and the witness is a shortcut to verification.
+					\item and the \textbf{witness is a shortcut} to verification.
 				\end{itemize}
+				\item Any user should try to tweet as close to $t_0$ as possible to make sure $t_0$ is the deadline.
     \end{itemize}
 
 }
 
-\begin{frame}{3 Archetypes}
+\begin{frame}{Trustless Randomness Beacons}
     %\newlength{\onethird}
     \setlength{\onethird}{0.315\textwidth}
     \vspace{.2cm}
@@ -248,18 +285,21 @@
     \begin{itemize}
 				\item Autocratic Collector
 				\begin{itemize}
-					\item Obviously not ideal in our setting.
+					\item Obviously not ideal for us. Not able to trust it.
 				\end{itemize}
 				\item Specialized MPC
 				\begin{itemize}
-					\item Complex mechanisms, security governed by heavy math and protocols
-					\item Scalability issues that needs to be solved
-					\item Must participate by ``being there'' and do work
-					\item Best suited for permissioned settings
+					\item The most \textbf{complex}
+					\item Security governed by heavy\textbf{ math, cryptography and protocols}
+					\item \textbf{Scalability} issues that needs to be solved
+					\item Must participate by \textbf{``being there'' and do work}
+					\item POSS: Best suited for permissioned settings
 				\end{itemize}
         \item Transparent Authority
 				\begin{itemize}
-					\item (where s-mpc governed by math) Governed by simpler things such as the logic behind slow hash functions in Random Zoo.
+					\item (where s-mpc governed by math) Governed by simpler things such as \textbf{logic}, like the slow hash functions in Random Zoo.
+					\item So often simpler
+					\item Often being a \textbf{single authority}, \textbf{single point of failure}
 				\end{itemize}
     \end{itemize}
 }
