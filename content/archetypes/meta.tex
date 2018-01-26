@@ -115,7 +115,7 @@
 								%  \item The output at January 17, 15:11 (UTC)\\
 								%	      \texttt{\scriptsize 67AE66B6E1812F4D32064B834A5E1AD5\\1424DCBC18DF8A9AAE2B8B7FA409002E\\9E314045F6E595A8EEBBB027CFBB4D8B\\BA64007F6EAE3EC92051ADD8391DA2B9\\}
 								%\end{itemize}
-								
+
             \end{itemize}
 						\vspace{.7cm}\centering
 						{%
@@ -171,7 +171,7 @@
 																			[.{Group Leader 2} $p_1$ $p_2$ $p_3$ ]
 																			[.{Group Leader 3} $p_1$ $p_2$ $p_3$ ]
 									]
-						
+
         \end{column}
         \begin{column}{0.3\textwidth}
             \begin{center}
@@ -196,13 +196,13 @@
 \end{frame}
 \note{
     \begin{itemize}
-				\item RandHerd, Which consists of two parts. 
+				\item RandHerd, Which consists of two parts.
 				\begin{itemize}
 					\item \textbf{Setup-part} where partcipants are \textbf{sharded} into a protocol leader, group leaders and participants. This takes roughly 10 minutes (n=1024).
 					\item After the setup, participants can in the \textbf{round execution} can \textbf{generate} a random number \textbf{every 6 seconds.}
 					\item \textbf{Participants}: random numbers \textrightarrow{} \textbf{batched} by group leaders \textrightarrow{} \textbf{collected} by protocol leader.
 					\item \textbf{After some cryptographic computation} in batches back and forth between the protocol leader, group leaders, and ordinary participants, a \textbf{single collectively} created random number is \textbf{released} by the protocol leader.
-					\item This number is efficiently \textbf{verifiable} by everyone. 
+					\item This number is efficiently \textbf{verifiable} by everyone.
 					\item 5.45
 				\end{itemize}
     \end{itemize}
@@ -211,7 +211,7 @@
 \begin{frame}{Transparent Authority: A Random Zoo}
     \begin{columns}
         \begin{column}{0.7\textwidth}
-            \includegraphics[width=\textwidth]{figures/ARandomZoo.pdf}
+            \includegraphics[width=\textwidth]{figures/keep/ARandomZoo.pdf}
         \end{column}
         \begin{column}{0.3\textwidth}
             \begin{center}
@@ -235,11 +235,11 @@
 \end{frame}
 \note{
     \begin{itemize}
-			
+
 				\item $t_{-1}$: \textbf{Data reception starts}.
 				\begin{itemize}
 					\item Concatenated in order of arrival.
-					
+
 				\end{itemize}
 				\item $t_0$: \textbf{Data reception stops}
 				\begin{itemize}
